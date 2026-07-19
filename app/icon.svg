@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <style>
+    .bg {
+      fill: #FFFFFF;
+    }
+    .bracket {
+      fill: #181A18;
+      opacity: 0.8;
+    }
+    .accent {
+      fill: #FFCB05;
+    }
+    @media (prefers-color-scheme: dark) {
+      .bg {
+        fill: #181A18;
+      }
+      .bracket {
+        fill: #FFFFFF;
+        opacity: 0.8;
+      }
+    }
+  </style>
+  <rect class="bg" x="0" y="0" width="24" height="24" />
+  <path class="bracket" d="M2 2h6v2H4v4H2V2z" />
+  <path class="bracket" d="M16 2h6v6h-2V4h-4V2z" />
+  <path class="bracket" d="M2 16h2v4h4v2H2v-6z" />
+  <path class="accent" d="M20 16h2v6h-6v-2h4V16z" />
+</svg>
