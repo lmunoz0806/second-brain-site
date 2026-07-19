@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#181A18" />
+
+  <!-- L-bracket mark, scaled 6x from the 24-unit icon grid -->
+  <g transform="translate(96 96) scale(6)">
+    <path fill="#FFFFFF" opacity="0.85" d="M2 2h6v2H4v4H2V2z" />
+    <path fill="#FFFFFF" opacity="0.85" d="M16 2h6v6h-2V4h-4V2z" />
+    <path fill="#FFFFFF" opacity="0.85" d="M2 16h2v4h4v2H2v-6z" />
+    <path fill="#FFCB05" d="M20 16h2v6h-6v-2h4V16z" />
+  </g>
+
+  <text x="96" y="356" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="88" font-weight="900" letter-spacing="-2.6" fill="#FFFFFF">Second Brain</text>
+
+  <text x="96" y="428" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#A8ABA8">Local-first command center for your Markdown vault.</text>
+
+  <text x="96" y="510" font-family="SF Mono, Menlo, Consolas, monospace" font-size="22" font-weight="400" fill="#6E726E">your vault  &#8594;  pgvector  &#8594;  Ollama  &#8594;  cited answer</text>
+
+  <text x="96" y="566" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2.8" fill="#5C5C5C">OPEN SOURCE &#183; MIT &#183; WORKS OFFLINE</text>
+</svg>
