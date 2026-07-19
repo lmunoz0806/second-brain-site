@@ -26,13 +26,9 @@ npx @resvg/resvg-js-cli scripts/og.svg public/og.png
 
 The site ships as a static bundle served by nginx (see `Dockerfile` + `nginx.conf`).
 
-1. Coolify → New Resource → this GitHub repo, branch `main`.
-2. Build Pack: **Dockerfile** (not nixpacks).
-3. Ports Exposed: **80**. No environment variables needed.
-4. Attach the domain + Let's Encrypt, enable auto-deploy on push.
-5. Health check: `GET /` expecting `200`.
+Quick version: New Resource → this repo, branch `main` → Build Pack **Dockerfile** → port **80** → domain + Let's Encrypt → auto-deploy. No env vars.
 
-When the final domain is decided, update `siteUrl` in `lib/content.ts` (it feeds `metadataBase` and the OG URLs) and redeploy.
+Full walkthrough, post-deploy verification, and the `siteUrl` follow-up: **[docs/DEPLOY.md](docs/DEPLOY.md)**.
 
 ## License
 
