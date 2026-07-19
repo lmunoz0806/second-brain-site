@@ -1,7 +1,16 @@
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/sections/Footer";
+
 export default function Home() {
   return (
-    <main id="main">
-      <h1 className="eyebrow p-8">Second Brain</h1>
-    </main>
+    <>
+      <Nav />
+      <main id="main">
+        <section className="bg-ink px-6 py-32 text-white">
+          <h1 className="eyebrow mx-auto max-w-[1100px]">Second Brain</h1>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }
