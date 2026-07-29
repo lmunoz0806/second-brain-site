@@ -16,7 +16,7 @@ export function Install() {
           {install.macos.body}
         </p>
         <div className="mt-5">
-          <BtnAccent href={links.releases} external>
+          <BtnAccent href={links.download} external>
             {install.macos.cta}
           </BtnAccent>
         </div>

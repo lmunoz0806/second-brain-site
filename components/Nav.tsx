@@ -36,7 +36,7 @@ export function Nav() {
             </li>
           </ul>
           <a
-            href={links.releases}
+            href={links.download}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-sm border border-white/30 px-4 py-1.5 text-[13px] font-bold transition-colors duration-200 hover:border-white"

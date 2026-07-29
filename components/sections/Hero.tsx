@@ -20,7 +20,7 @@ export function Hero() {
             {hero.subhead}
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <BtnAccent href={links.releases} external>
+            <BtnAccent href={links.download} external>
               {hero.ctaPrimary}
             </BtnAccent>
             <span className="text-white/70">

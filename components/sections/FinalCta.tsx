@@ -14,7 +14,7 @@ export function FinalCta() {
           </p>
         </div>
         <div className="shrink-0">
-          <BtnPrimary href={links.releases} external>
+          <BtnPrimary href={links.download} external>
             {finalCta.cta}
           </BtnPrimary>
         </div>

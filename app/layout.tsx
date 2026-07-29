@@ -47,7 +47,7 @@ const jsonLd = {
   operatingSystem: "macOS",
   applicationCategory: "ProductivityApplication",
   license: "https://opensource.org/license/mit",
-  downloadUrl: links.releases,
+  downloadUrl: links.download,
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   description,
 };
