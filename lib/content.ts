@@ -3,8 +3,8 @@
  * so copy edits never touch JSX.
  */
 
-/** Update this when the Coolify domain is decided — it feeds metadataBase and OG URLs. */
-export const siteUrl = "https://secondbrain.lcubestudios.dev";
+/** Production domain on the Coolify host — feeds metadataBase and OG URLs. */
+export const siteUrl = "https://secondbrain.luismunoz.xyz";
 
 export const links = {
   repo: "https://github.com/lmunoz0806/second-brain-frontend",
