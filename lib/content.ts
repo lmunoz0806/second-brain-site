@@ -11,7 +11,7 @@ export const links = {
   releases: "https://github.com/lmunoz0806/second-brain-frontend/releases",
   /** Direct DMG for the latest release — update per release. */
   download:
-    "https://github.com/lmunoz0806/second-brain-frontend/releases/download/v1.2.0/Second.Brain_1.2.0_aarch64.dmg",
+    "https://github.com/lmunoz0806/second-brain-frontend/releases/download/v1.2.1/Second.Brain_1.2.1_aarch64.dmg",
   issues: "https://github.com/lmunoz0806/second-brain-frontend/issues",
   license:
     "https://github.com/lmunoz0806/second-brain-frontend/blob/main/LICENSE",
@@ -173,7 +173,7 @@ export const openSource = {
   body: "Second Brain is open source under the MIT license. The code that touches your notes is code you can audit, fork, and make yours.",
   stats: [
     { value: "MIT", label: "License" },
-    { value: "v1.2.0", label: "Latest release" },
+    { value: "v1.2.1", label: "Latest release" },
     { value: "TypeScript", label: "Strict mode, end to end" },
   ],
   cta: "Star on GitHub",
