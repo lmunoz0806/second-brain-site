@@ -11,7 +11,7 @@ export const links = {
   releases: "https://github.com/lmunoz0806/second-brain-frontend/releases",
   /** Direct DMG for the latest release — update per release. */
   download:
-    "https://github.com/lmunoz0806/second-brain-frontend/releases/download/v1.2.1/Second.Brain_1.2.1_aarch64.dmg",
+    "https://github.com/lmunoz0806/second-brain-frontend/releases/download/v1.2.2/Second.Brain_1.2.2_aarch64.dmg",
   issues: "https://github.com/lmunoz0806/second-brain-frontend/issues",
   license:
     "https://github.com/lmunoz0806/second-brain-frontend/blob/main/LICENSE",
