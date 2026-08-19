@@ -87,10 +87,16 @@ the page returns `404` to anyone who is not signed in as the owner:
 ```
 404  .../second-brain-frontend                                  (View on GitHub)
 404  .../second-brain-frontend/releases                          (Releases)
-404  .../releases/download/v1.2.1/Second.Brain_1.2.1_aarch64.dmg (primary CTA)
 404  .../blob/main/LICENSE                                       (MIT link)
 404  .../second-brain-frontend/issues                            (Issues)
 ```
+
+**Partially resolved (2026-08-19):** the primary download CTA no longer points
+at a private release asset — it is self-hosted on this host, see *Hosting the
+desktop DMG* above. That was the single most damaging link, but it clears only
+one line of this gate. The four links above still 404, the `git clone` in the
+quickstart still fails, and the open-source / MIT / "audit, fork, and make
+yours" copy is still untrue while the repo is private.
 
 That kills **"Download for macOS →"**, the page's primary CTA, in both the
 hero and the install section. The `git clone` in the quickstart block fails
@@ -117,6 +123,48 @@ Two ways out, both a decision rather than a fix:
    stops promising a repo nobody can open.
 
 Nothing about the deployment is implicated; this is purely repo visibility.
+
+## Hosting the desktop DMG
+
+The download CTA points at **this host**, not a GitHub release
+(`https://secondbrain.luismunoz.xyz/dl/Second-Brain_<version>_aarch64.dmg`).
+`second-brain-frontend` is private, so its release assets 404 for the public —
+see the pre-launch gate below.
+
+The DMG is served from a **Coolify persistent volume**, never from git or the
+Docker build context. A 300 MB binary in the repo would bloat every clone
+forever and every image build.
+
+| | |
+|---|---|
+| Host path | `/data/coolify/dmg/second-brain` |
+| Container mount | `/usr/share/nginx/html/dl` |
+| nginx | `location /dl/` in `nginx.conf` — `application/octet-stream`, `Content-Disposition: attachment`, 1-day cache, `try_files … =404` |
+
+### Publishing a new DMG
+
+1. Add the volume once, in Coolify → app `er2h7c9rjyqjd3jqa1tfbpy5` →
+   **Storages** → Persistent Storage → host `/data/coolify/dmg/second-brain`
+   → container `/usr/share/nginx/html/dl`. Saving triggers a redeploy.
+2. Copy the built DMG up, renaming it without spaces:
+
+   ```bash
+   scp "second-brain-frontend/src-tauri/target/aarch64-apple-darwin/release/bundle/dmg/Second Brain_<v>_aarch64.dmg" \
+     root@45.79.159.8:/data/coolify/dmg/second-brain/Second-Brain_<v>_aarch64.dmg
+   ```
+
+3. Update `links.download` in `lib/content.ts` to the new filename and push.
+4. Verify anonymously — a `200`, an `application/octet-stream` type, and a
+   `Content-Length` matching the local file:
+
+   ```bash
+   curl -sI https://secondbrain.luismunoz.xyz/dl/Second-Brain_<v>_aarch64.dmg \
+     | grep -iE '^HTTP|content-type|content-length'
+   ```
+
+Keep the previous DMG in place until the new link is verified — the volume is
+the only copy the site serves, and overwriting in place makes rollback a
+re-upload.
 
 ## Local verification (same artifacts as production)
 

@@ -9,9 +9,14 @@ export const siteUrl = "https://secondbrain.luismunoz.xyz";
 export const links = {
   repo: "https://github.com/lmunoz0806/second-brain-frontend",
   releases: "https://github.com/lmunoz0806/second-brain-frontend/releases",
-  /** Direct DMG for the latest release — update per release. */
-  download:
-    "https://github.com/lmunoz0806/second-brain-frontend/releases/download/v1.2.2/Second.Brain_1.2.2_aarch64.dmg",
+  /**
+   * Direct DMG for the latest release — update per release.
+   * Self-hosted on the Coolify volume mounted at /usr/share/nginx/html/dl,
+   * NOT a GitHub release asset: second-brain-frontend is private, so its
+   * release assets return 404 to anyone who is not signed in as the owner.
+   * See the pre-launch gate in docs/DEPLOY.md.
+   */
+  download: "https://secondbrain.luismunoz.xyz/dl/Second-Brain_1.4.0_aarch64.dmg",
   issues: "https://github.com/lmunoz0806/second-brain-frontend/issues",
   license:
     "https://github.com/lmunoz0806/second-brain-frontend/blob/main/LICENSE",
