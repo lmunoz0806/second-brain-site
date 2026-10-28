@@ -1,5 +1,5 @@
 import { Eyebrow, Headline, Tile } from "@/components/Tile";
-import { localFirst } from "@/lib/content";
+import { poweredBy } from "@/lib/content";
 
 /** Yellow bracket glyph marking the loopback address — the tile's one accent. */
 function AccentBracket() {
@@ -17,13 +17,18 @@ function AccentBracket() {
   );
 }
 
-export function LocalFirst() {
+export function PoweredBy() {
   return (
-    <Tile tone="light" id="local-first">
-      <Eyebrow>{localFirst.eyebrow}</Eyebrow>
-      <Headline>{localFirst.headline}</Headline>
+    <Tile tone="light-2" id="powered-by">
+      <div className="max-w-[720px]">
+        <Eyebrow>{poweredBy.eyebrow}</Eyebrow>
+        <Headline>{poweredBy.headline}</Headline>
+        <p className="mt-5 text-[16px] leading-relaxed text-fg-2">
+          {poweredBy.body}
+        </p>
+      </div>
       <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
-        {localFirst.specs.map((spec, i) => (
+        {poweredBy.specs.map((spec, i) => (
           <div key={spec.title} className="border-t border-line-strong pt-6">
             {i === 0 ? <AccentBracket /> : <div className="mb-3 h-[14px]" />}
             <p className="tnum font-mono text-[26px] font-bold tracking-head">

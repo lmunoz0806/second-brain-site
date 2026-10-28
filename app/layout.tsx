@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import { links, siteUrl } from "@/lib/content";
 import "./globals.css";
 
-const title = "Second Brain — local-first command center for your Markdown vault";
+const title = "Second Brain — local-first memory for your Markdown notes";
 const description =
-  "Open-source, local-first workspace connecting notes, tasks, a terminal, and a local AI that answers from your vault with cited sources. Binds to 127.0.0.1 — works fully offline.";
+  "Capture into an Inbox that files itself, browse your vault, and ask questions answered from your own notes with citations. Runs locally on Apple silicon Macs and works offline, or connects to your Claude or ChatGPT subscription.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -21,8 +21,7 @@ export const metadata: Metadata = {
     "ollama",
     "pgvector",
     "ai notes",
-    "task management",
-    "knowledge graph",
+    "memory system",
   ],
   openGraph: {
     title,
@@ -44,9 +43,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "Second Brain",
-  operatingSystem: "macOS",
+  operatingSystem: "macOS 15 or later (Apple silicon)",
   applicationCategory: "ProductivityApplication",
-  license: "https://opensource.org/license/mit",
   downloadUrl: links.download,
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   description,

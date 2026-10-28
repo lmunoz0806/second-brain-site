@@ -51,16 +51,3 @@ export function BtnOutlineDark({ href, children, external }: BtnProps) {
     </a>
   );
 }
-
-/** Quiet text link with arrow affordance. */
-export function GhostLink({ href, children, external }: BtnProps) {
-  return (
-    <a
-      href={href}
-      {...externalProps(external)}
-      className="inline-flex items-center gap-1 text-[15px] font-medium underline-offset-4 hover:underline"
-    >
-      {children}
-    </a>
-  );
-}

@@ -11,9 +11,9 @@
 
   <text x="96" y="356" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="88" font-weight="900" letter-spacing="-2.6" fill="#FFFFFF">Second Brain</text>
 
-  <text x="96" y="428" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#A8ABA8">Local-first command center for your Markdown vault.</text>
+  <text x="96" y="428" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#A8ABA8">Local-first memory for your Markdown notes.</text>
 
   <text x="96" y="510" font-family="SF Mono, Menlo, Consolas, monospace" font-size="22" font-weight="400" fill="#6E726E">your vault  &#8594;  pgvector  &#8594;  Ollama  &#8594;  cited answer</text>
 
-  <text x="96" y="566" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2.8" fill="#5C5C5C">OPEN SOURCE &#183; MIT &#183; WORKS OFFLINE</text>
+  <text x="96" y="566" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2.8" fill="#5C5C5C">APPLE SILICON &#183; WORKS OFFLINE</text>
 </svg>
