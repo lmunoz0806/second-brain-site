@@ -24,21 +24,9 @@ export function Nav() {
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href={links.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[13px] font-medium text-white/70 transition-colors duration-200 hover:text-white"
-              >
-                GitHub
-              </a>
-            </li>
           </ul>
           <a
             href={links.download}
-            target="_blank"
-            rel="noopener noreferrer"
             className="rounded-sm border border-white/30 px-4 py-1.5 text-[13px] font-bold transition-colors duration-200 hover:border-white"
           >
             {nav.download} →

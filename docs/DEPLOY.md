@@ -78,51 +78,20 @@ records to proxied, confirm zone SSL mode is **Full (strict)**, then verify
 `200` with a `cf-ray` header and run the URL through an unfurl checker
 (Slack paste, or opengraph.xyz) for the dark 1200×630 card.
 
-## PRE-LAUNCH GATE: every GitHub link 404s for the public
+## Pre-launch gate: GitHub links (resolved 2026-10-27)
 
-**Do not make this site public until this is resolved.** The product repo
-`lmunoz0806/second-brain-frontend` is **private**, so every outbound link on
-the page returns `404` to anyone who is not signed in as the owner:
+The product repo `lmunoz0806/second-brain-frontend` is **private**, so every
+link to it returned `404` to anyone not signed in as the owner. Option 2 of
+the gate was taken with the v2.6.0 redesign (`docs/specs/v2-site-redesign.md`):
+the app is proprietary, the page has no GitHub, Releases, Issues, License or
+`git clone` links, and the download is the self-hosted DMG above.
 
-```
-404  .../second-brain-frontend                                  (View on GitHub)
-404  .../second-brain-frontend/releases                          (Releases)
-404  .../blob/main/LICENSE                                       (MIT link)
-404  .../second-brain-frontend/issues                            (Issues)
-```
-
-**Partially resolved (2026-08-19):** the primary download CTA no longer points
-at a private release asset — it is self-hosted on this host, see *Hosting the
-desktop DMG* above. That was the single most damaging link, but it clears only
-one line of this gate. The four links above still 404, the `git clone` in the
-quickstart still fails, and the open-source / MIT / "audit, fork, and make
-yours" copy is still untrue while the repo is private.
-
-That kills **"Download for macOS →"**, the page's primary CTA, in both the
-hero and the install section. The `git clone` in the quickstart block fails
-the same way. The "MIT. Read every line." section and the claim that the code
-is something you can *"audit, fork, and make yours"* are also untrue while
-the repo is private.
-
-Verify anonymously — never with `gh` or a logged-in browser, both of which
-authenticate and return `200`, which is exactly how this was missed the first
-time:
+Re-check anonymously after any copy change — never with `gh` or a logged-in
+browser, both of which authenticate and return `200`:
 
 ```bash
-curl -sS -o /dev/null -w '%{http_code}\n' \
-  https://github.com/lmunoz0806/second-brain-frontend/releases
+grep -rn 'github.com' out/ && echo "FAIL: GitHub link on the page"
 ```
-
-Two ways out, both a decision rather than a fix:
-
-1. **Make `second-brain-frontend` public.** Matches what the page already
-   claims and every link starts working with no site change. Audit git
-   history for committed secrets first.
-2. **Keep it private** — then repoint the download CTA at a genuinely public
-   artifact and rewrite the open-source / MIT / quickstart copy so the page
-   stops promising a repo nobody can open.
-
-Nothing about the deployment is implicated; this is purely repo visibility.
 
 ## Hosting the desktop DMG
 

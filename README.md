@@ -1,6 +1,6 @@
 # second-brain-site
 
-Marketing landing page for [Second Brain](https://github.com/lmunoz0806/second-brain-frontend) — the local-first command center for your Markdown vault.
+Marketing landing page for Second Brain — local-first memory for your Markdown notes (the desktop app ships as Cubicl Vault).
 
 Static Next.js export on the LCube design system (flat black `#181A18` + single yellow `#FFCB05` accent, Helvetica Neue, hairlines instead of shadows). No backend, no analytics, one client component (the copy button).
 

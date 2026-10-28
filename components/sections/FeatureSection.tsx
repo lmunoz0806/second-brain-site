@@ -1,47 +1,29 @@
-import type { ReactNode } from "react";
-import { Headline, Tile, type Tone } from "@/components/Tile";
+import { Eyebrow, Headline, Tile, type Tone } from "@/components/Tile";
 import type { Feature } from "@/lib/content";
 
 interface FeatureSectionProps {
   feature: Feature;
   tone: Tone;
-  mockup: ReactNode;
-  /** Render the mockup on the left instead of the right. */
-  flip?: boolean;
 }
 
 /**
- * Shared two-column layout for the numbered feature sections:
- * ghost number + copy on one side, a fake-UI mockup on the other.
+ * One feature: label, headline, a paragraph and three points, then its
+ * real app screenshots at full width.
  */
-export function FeatureSection({
-  feature,
-  tone,
-  mockup,
-  flip,
-}: FeatureSectionProps) {
+export function FeatureSection({ feature, tone }: FeatureSectionProps) {
   const dark = tone === "dark";
   const muted = dark ? "text-white/60" : "text-fg-2";
-  const ghost = dark ? "text-white/15" : "text-line-2";
   const rule = dark ? "border-white/15" : "border-line-1";
 
   return (
     <Tile tone={tone} id={feature.id}>
-      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-        <div className={flip ? "lg:order-2" : ""}>
-          <p
-            className={`tnum text-[64px] leading-none font-extralight tracking-display ${ghost}`}
-            aria-hidden="true"
-          >
-            {feature.number}
-          </p>
-          <p className={`eyebrow mt-4 mb-5 ${dark ? "text-white/50" : "text-fg-3"}`}>
-            {feature.number} — {feature.eyebrow}
-          </p>
+      <div className="grid gap-10 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <Eyebrow tone={tone}>{feature.eyebrow}</Eyebrow>
           <Headline>{feature.headline}</Headline>
-          <p className={`mt-5 text-[16px] leading-relaxed ${muted}`}>
-            {feature.body}
-          </p>
+        </div>
+        <div>
+          <p className={`text-[16px] leading-relaxed ${muted}`}>{feature.body}</p>
           <ul className="mt-8">
             {feature.points.map((point) => (
               <li
@@ -56,7 +38,22 @@ export function FeatureSection({
             ))}
           </ul>
         </div>
-        <div className={flip ? "lg:order-1" : ""}>{mockup}</div>
+      </div>
+      <div className="mt-14 space-y-8">
+        {feature.screens.map((screen) => (
+          // Static export with images.unoptimized: a plain img is what
+          // next/image would emit anyway.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={screen.src}
+            src={screen.src}
+            alt={screen.alt}
+            width={2400}
+            height={1500}
+            loading="lazy"
+            className={`h-auto w-full rounded-md border ${dark ? "border-white/15" : "border-line-1"}`}
+          />
+        ))}
       </div>
     </Tile>
   );

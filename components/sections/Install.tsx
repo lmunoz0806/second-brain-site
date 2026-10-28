@@ -1,7 +1,6 @@
 import { BtnAccent } from "@/components/Buttons";
-import { CopyCommand } from "@/components/CopyCommand";
 import { Eyebrow, Headline, Tile } from "@/components/Tile";
-import { install, links, quickstart } from "@/lib/content";
+import { install, links } from "@/lib/content";
 
 /** Dark install tile. Its single yellow element is the Download button. */
 export function Install() {
@@ -11,24 +10,12 @@ export function Install() {
       <Headline>{install.headline}</Headline>
 
       <div className="mt-12 border-t border-white/15 pt-8">
-        <p className="text-[17px] font-bold">{install.macos.title}</p>
+        <p className="text-[17px] font-bold">{install.title}</p>
         <p className="mt-2 text-[14px] leading-relaxed text-white/60">
-          {install.macos.body}
+          {install.body}
         </p>
         <div className="mt-5">
-          <BtnAccent href={links.download} external>
-            {install.macos.cta}
-          </BtnAccent>
-        </div>
-      </div>
-
-      <div className="mt-10 border-t border-white/15 pt-8">
-        <p className="text-[17px] font-bold">{install.source.title}</p>
-        <p className="mt-2 text-[14px] leading-relaxed text-white/60">
-          {install.source.body}
-        </p>
-        <div className="mt-5">
-          <CopyCommand command={quickstart} />
+          <BtnAccent href={links.download}>{install.cta}</BtnAccent>
         </div>
       </div>
     </Tile>

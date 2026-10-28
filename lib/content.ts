@@ -7,181 +7,133 @@
 export const siteUrl = "https://secondbrain.luismunoz.xyz";
 
 export const links = {
-  repo: "https://github.com/lmunoz0806/second-brain-frontend",
-  releases: "https://github.com/lmunoz0806/second-brain-frontend/releases",
   /**
    * Direct DMG for the latest release — update per release.
-   * Self-hosted on the Coolify volume mounted at /usr/share/nginx/html/dl,
-   * NOT a GitHub release asset: second-brain-frontend is private, so its
-   * release assets return 404 to anyone who is not signed in as the owner.
-   * See the pre-launch gate in docs/DEPLOY.md.
+   * Self-hosted on the Coolify volume mounted at /usr/share/nginx/html/dl.
+   * The app's repo is private, so a GitHub release asset would 404 for
+   * every visitor. See "Hosting the desktop DMG" in docs/DEPLOY.md.
    */
-  download: "https://secondbrain.luismunoz.xyz/dl/Second-Brain_1.4.0_aarch64.dmg",
-  issues: "https://github.com/lmunoz0806/second-brain-frontend/issues",
-  license:
-    "https://github.com/lmunoz0806/second-brain-frontend/blob/main/LICENSE",
+  download: "https://secondbrain.luismunoz.xyz/dl/Second-Brain_2.6.1_aarch64.dmg",
+  lcube: "https://www.lcubestudios.io/",
 } as const;
-
-export const quickstart = `git clone ${links.repo} && cd second-brain-frontend && yarn && yarn dev`;
 
 export const nav = {
   anchors: [
-    { label: "Features", href: "#write" },
+    { label: "Capture", href: "#capture" },
+    { label: "Sources", href: "#sources" },
     { label: "Ask", href: "#ask" },
-    { label: "Install", href: "#install" },
     { label: "FAQ", href: "#faq" },
   ],
   download: "Download",
 } as const;
 
 export const hero = {
-  eyebrow: "Local-first · Open source · MIT",
-  headline: ["Your notes, tasks, and AI.", "One vault. One machine."],
-  subhead:
-    "Second Brain turns a folder of Markdown into a command center — formatted writing, tasks and timers, a real terminal, and a local AI that answers from your notes with sources.",
-  ctaPrimary: "Download for macOS →",
-  ctaSecondary: "View on GitHub",
-  quickstartLabel: "Or run it from source",
+  headline: ["Your notes, connected", "to everything you know"],
+  line: ["Runs locally on your Mac", "Works offline"],
+  cta: "Download for macOS",
 } as const;
 
-export const localFirst = {
-  eyebrow: "Privacy",
-  headline: "Nothing leaves 127.0.0.1.",
-  specs: [
-    {
-      value: "127.0.0.1",
-      title: "Binds to localhost",
-      body: "The server refuses non-loopback hosts by default. No accounts, no telemetry, no cloud between you and your notes.",
-    },
-    {
-      value: "0 API keys",
-      title: "Works fully offline",
-      body: "Retrieval and generation run on local models through Ollama. Unplug the network and everything still works.",
-    },
-    {
-      value: ".md files",
-      title: "Plain Markdown on disk",
-      body: "Your vault is a folder of files you already own. No proprietary database, no export step, no lock-in.",
-    },
-  ],
-} as const;
+export interface Screenshot {
+  src: string;
+  alt: string;
+}
 
 export interface Feature {
   id: string;
-  number: string;
   eyebrow: string;
   headline: string;
   body: string;
   points: readonly string[];
+  screens: readonly Screenshot[];
 }
 
 export const features: readonly Feature[] = [
   {
-    id: "write",
-    number: "01",
-    eyebrow: "Write",
-    headline: "Write formatted. Save nothing manually.",
-    body: "A WYSIWYG Markdown editor that renders as you type — headings, tables, code blocks — while the file on disk stays plain Markdown.",
+    id: "capture",
+    eyebrow: "Capture",
+    headline: "Drop it in, it files itself.",
+    body: "Add notes, transcripts and files to the Inbox. Second Brain reads each one, writes a summary, and suggests where it belongs in your vault. You approve it, and it is filed. Meeting notes land in Meetings, grouped by day and filterable by client and people.",
     points: [
-      "Autosave with visible save state",
-      "Version snapshot before destructive edits",
-      "Tabs, live file tree, and a command palette",
+      "Process with a local model, or with Claude or Codex",
+      "Review every suggestion before anything moves",
+      "Meetings by week, month or custom range",
+    ],
+    screens: [
+      {
+        src: "/screens/inbox.webp",
+        alt: "The Inbox with three captured items and a filing suggestion summarizing Northwind portal feedback",
+      },
+      {
+        src: "/screens/meetings.webp",
+        alt: "Meetings grouped by day, each tagged with its client and attendees",
+      },
     ],
   },
   {
-    id: "connect",
-    number: "02",
-    eyebrow: "Connect",
-    headline: "Every [[wikilink]] becomes a map.",
-    body: "Link notes the way you think. The knowledge graph builds itself from your links and backlinks — no plugins, no setup.",
+    id: "sources",
+    eyebrow: "Sources",
+    headline: "It learns what you know.",
+    body: "Point Second Brain at a folder of Markdown, PDFs and images. It indexes your notes on your Mac and keeps up as they change. Browse in Tree, List or Grid, and write in an editor that renders as you type while the file on disk stays plain Markdown.",
     points: [
-      "Backlinks tracked across the whole vault",
-      "3D graph overlay on ⌘G, 2D fallback",
-      "Click any node to jump to the note",
+      "Your vault is a folder of files you already own",
+      "Tree, List, Grid and Recent views",
+      "Works with an existing Obsidian vault",
     ],
-  },
-  {
-    id: "execute",
-    number: "03",
-    eyebrow: "Execute",
-    headline: "Notes that turn into work.",
-    body: "Tasks and time tracking live next to the notes that spawned them — not in a separate app that forgets the context.",
-    points: [
-      "Today, Week, and Board views with drag and drop",
-      "Concurrent timers across tasks",
-      "Daily notes, one keystroke away",
-    ],
-  },
-  {
-    id: "terminal",
-    number: "04",
-    eyebrow: "Terminal",
-    headline: "A real shell, in the same window.",
-    body: "A full terminal — not a toy — wired to your machine. Run the project you just wrote about without leaving the vault.",
-    points: [
-      "Real PTY: vim, git, yarn all behave",
-      "Opens in your active workspace directory",
-      "Toggle with ⌘J, stays out of the way",
-    ],
-  },
-  {
-    id: "recover",
-    number: "05",
-    eyebrow: "Recover",
-    headline: "Undo, but for your whole vault.",
-    body: "Every edit is backed by automatic version history. Deleted notes land in a trash you can browse, not a void.",
-    points: [
-      "Per-version restore from the History popover",
-      "Trash view with per-file recovery",
-      "Save-conflict protection when files change on disk",
+    screens: [
+      {
+        src: "/screens/sources.webp",
+        alt: "A meeting note open in the Sources editor with a breadcrumb and note toolbar",
+      },
     ],
   },
   {
     id: "ask",
-    number: "06",
     eyebrow: "Ask",
-    headline: "Answers from your notes, not the internet.",
-    body: "Ask questions in plain language. Second Brain retrieves the relevant passages from your vault and answers with citations you can click — or tells you honestly when your notes don't contain the answer.",
+    headline: "Answers from your own notes.",
+    body: "Ask a question in plain language. Second Brain finds the passages in your vault that answer it, replies with numbered citations, and opens the exact passage when you click one. When your notes don't hold the answer, it says so.",
     points: [
-      "Retrieval over your vault with Postgres + pgvector",
-      "Local models through Ollama — nothing leaves your machine",
-      "Every claim carries a clickable citation",
-      "Per-workspace indexes with visible index health",
+      "Every claim links to the note it came from",
+      "Ask by voice with push-to-talk",
+      "Runs on a local model or your Claude or Codex subscription",
+    ],
+    screens: [
+      {
+        src: "/screens/ask.webp",
+        alt: "An answer about choosing an SMS vendor, with numbered citations and the cited passage open beside it",
+      },
     ],
   },
 ] as const;
 
-export const askPipeline = [
-  "your vault",
-  "embeddings · pgvector",
-  "local model · Ollama",
-  "cited answer",
-] as const;
+export const poweredBy = {
+  eyebrow: "Powered by",
+  headline: "Local by default.",
+  body: "Search, embeddings and answers run on your Mac with Ollama and work offline. Already pay for Claude or ChatGPT? Connect your subscription through Claude Code or Codex and Ask uses it instead.",
+  specs: [
+    {
+      value: "127.0.0.1",
+      title: "Binds to localhost",
+      body: "The app refuses remote connections. No account, no telemetry, no cloud between you and your notes.",
+    },
+    {
+      value: "Ollama",
+      title: "Local models, built in",
+      body: "The engine and the database ship inside the app. Once the models are downloaded, unplug the network and search and Ask keep working.",
+    },
+    {
+      value: "Claude · Codex",
+      title: "Or your subscription",
+      body: "Pick Claude Code or Codex in Settings. Your vault stays on disk; only the passages a question needs are sent.",
+    },
+  ],
+} as const;
 
 export const install = {
   eyebrow: "Install",
   headline: "Running in two minutes.",
-  macos: {
-    title: "Download for macOS",
-    body: "Signed and notarized DMG. Open it, drag to Applications, done.",
-    cta: "Download for macOS →",
-  },
-  source: {
-    title: "Run from source",
-    body: "Node 20+ and yarn. Postgres and Ollama are only needed if you turn on Ask.",
-  },
-} as const;
-
-export const openSource = {
-  eyebrow: "Open source",
-  headline: "MIT. Read every line.",
-  body: "Second Brain is open source under the MIT license. The code that touches your notes is code you can audit, fork, and make yours.",
-  stats: [
-    { value: "MIT", label: "License" },
-    { value: "v1.2.1", label: "Latest release" },
-    { value: "TypeScript", label: "Strict mode, end to end" },
-  ],
-  cta: "Star on GitHub",
+  title: "Free download for Apple silicon Macs",
+  body: "macOS 15 or later. Signed and notarized: open the DMG, drag the app to Applications, and pick a folder of notes. The first setup downloads the local models.",
+  cta: "Download for macOS",
 } as const;
 
 export interface FaqItem {
@@ -191,66 +143,53 @@ export interface FaqItem {
 
 export const faq: readonly FaqItem[] = [
   {
-    q: "Is it really offline?",
-    a: "Yes. The app binds to 127.0.0.1 and refuses remote hosts by default. Ask runs retrieval and generation on local models through Ollama, so questions and answers never leave your machine.",
+    q: "Does it work offline?",
+    a: "Yes. Search, embeddings and Ask run on your Mac with Ollama, and the app only listens on 127.0.0.1. Unplug the network and you can still search and ask your notes. The Inbox uses Claude by default; switch it to Local in Settings to keep that offline too.",
   },
   {
-    q: "How is this different from Obsidian?",
-    a: "Same respect for plain Markdown files, different scope. Second Brain builds tasks, time tracking, a real terminal, and a grounded local AI into one surface — things that are plugins or separate apps elsewhere. And the whole codebase is MIT, so nothing about it is a black box.",
+    q: "Can I use my Claude or ChatGPT subscription?",
+    a: "Yes. With Claude Code or Codex installed and signed in, pick it in Settings and Ask and the Inbox use it. When you do, the passages retrieved for each question, and the Inbox items you process, go to that provider (Anthropic or OpenAI). Embeddings and search stay on your Mac either way.",
   },
   {
-    q: "What does Ask need to run?",
-    a: "Docker (for Postgres with pgvector) and Ollama with two small models — one for embeddings, one for answers. Everything else works without them; Ask is opt-in.",
+    q: "What files does it read?",
+    a: "Markdown notes, PDFs, images, JSON and plain text, in a folder on your disk. Ask answers from your Markdown and text notes; the rest open in Sources.",
   },
   {
-    q: "Where is my data stored?",
-    a: "Your notes stay exactly where they are: a folder of Markdown files on your disk. The search index lives in a local Postgres database. Version history lives in a hidden folder inside the vault.",
+    q: "What Mac do I need?",
+    a: "A Mac with Apple silicon (M1 or later) running macOS 15 or later. Intel Macs are not supported.",
   },
   {
-    q: "Does it run on Windows or Linux?",
-    a: "The desktop app is macOS-first. On Windows and Linux, run it from source — it is a Node web app at heart and works anywhere Node 20 does.",
+    q: "Can I use my existing Obsidian vault?",
+    a: "Yes. Point Second Brain at any folder of Markdown files, including an Obsidian vault. It reads and writes plain Markdown and keeps your [[wikilinks]].",
   },
   {
-    q: "Is the macOS app signed?",
-    a: "Yes. The DMG is signed with an Apple Developer ID and notarized, so it opens without security warnings.",
-  },
-  {
-    q: "Can I use my existing vault?",
-    a: "Yes. Point Second Brain at any folder of Markdown files — including an existing Obsidian vault. It reads and writes plain Markdown and standard [[wikilinks]].",
-  },
-  {
-    q: "Can I contribute?",
-    a: "Please do. Issues and pull requests are open on GitHub, and the MIT license means you can also just fork it and build your own thing.",
+    q: "Is the app signed?",
+    a: "Yes. The DMG is signed with an Apple Developer ID and notarized by Apple, so it opens without security warnings.",
   },
 ] as const;
 
 export const finalCta = {
-  headline: "Own your second brain.",
-  body: "Free, open source, and yours — the way notes should be.",
-  cta: "Download for macOS →",
+  headline: "Get Second Brain for your Mac.",
+  body: "Free for Apple silicon Macs. Your notes stay yours.",
+  cta: "Download for macOS",
 } as const;
 
 export const footer = {
-  tagline: "Local-first command center for your Markdown vault.",
+  tagline: "Local-first memory for your Markdown notes.",
   columns: [
-    {
-      title: "Project",
-      links: [
-        { label: "GitHub", href: links.repo },
-        { label: "Releases", href: links.releases },
-        { label: "Issues", href: links.issues },
-        { label: "License", href: links.license },
-      ],
-    },
     {
       title: "Page",
       links: [
-        { label: "Features", href: "#write" },
+        { label: "Capture", href: "#capture" },
+        { label: "Sources", href: "#sources" },
         { label: "Ask", href: "#ask" },
-        { label: "Install", href: "#install" },
         { label: "FAQ", href: "#faq" },
       ],
     },
+    {
+      title: "Studio",
+      links: [{ label: "Built by LCube Studios", href: links.lcube }],
+    },
   ],
-  copyright: "© 2026 LCube Studios",
+  copyright: "© 2026 LCube Studios LLC. All rights reserved.",
 } as const;
