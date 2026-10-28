@@ -1,4 +1,4 @@
-# Site redesign for v2.6.0
+# Site redesign for v2.6
 
 Status: draft, 2026-10-27. Grilled with Luis the same day (rounds 1–3).
 Layout reference: Google AI Edge Foresight (developers.google.com/edge/foresight).
@@ -64,7 +64,7 @@ out of scope.
 
 - `yarn lint` and `yarn build` pass, and the static export renders.
 - No link on the page points at github.com.
-- The download link returns 200 to an anonymous `curl -I` after the DMG is on
+- The 2.6.1 download link returns 200 to an anonymous `curl -I` after the DMG is on
   the volume, and the site deploys from main through the Coolify webhook.
 - Luis looks at the live page.
 

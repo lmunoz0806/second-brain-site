@@ -13,7 +13,7 @@ export const links = {
    * The app's repo is private, so a GitHub release asset would 404 for
    * every visitor. See "Hosting the desktop DMG" in docs/DEPLOY.md.
    */
-  download: "https://secondbrain.luismunoz.xyz/dl/Second-Brain_2.6.0_aarch64.dmg",
+  download: "https://secondbrain.luismunoz.xyz/dl/Second-Brain_2.6.1_aarch64.dmg",
   lcube: "https://www.lcubestudios.io/",
 } as const;
 
